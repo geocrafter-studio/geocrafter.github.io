@@ -1,0 +1,75 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<section class="h-[100dvh] lg:h-[100vh] bg-brand-dark relative overflow-hidden flex flex-col">
+  <!-- Background decoration -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-0 left-0 w-96 h-96 bg-brand-yellow rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-yellow rounded-full filter blur-3xl translate-x-1/2 translate-y-1/2"></div>
+  </div>
+
+  <div class="container-custom relative flex-1 flex items-center">
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+      <!-- Text -->
+      <div class="space-y-6">
+        <h1 class="font-orbitron text-5xl lg:text-7xl text-brand-yellow tracking-wider leading-tight">
+          {title}
+        </h1>
+        <p class="font-orbitron text-xl lg:text-2xl text-neutral-300 tracking-widest uppercase">
+          GEOSPATIAL STUDIO
+        </p>
+        <p class="text-subheading text-neutral-200 max-w-xl mt-4">
+          {subtitle}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <a href="/#contact" class="btn-primary">
+            Contact Us
+          </a>
+          <a href="/helpdesk" class="btn-outline border-brand-yellow text-brand-yellow hover:bg-brand-yellow hover:text-brand-dark">
+            Helpdesk
+          </a>
+        </div>
+      </div>
+
+      <!-- Logo SVG -->
+      <div class="relative hidden lg:flex items-center justify-center">
+        <svg class="w-full max-w-2xl text-brand-yellow" viewBox="0 0 1000 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <mask id="gCutoutHero">
+              <rect width="100%" height="100%" fill="white"/>
+              <text x="320" y="450" font-size="140" font-family="Orbitron, Arial, sans-serif" font-weight="600" fill="black">G</text>
+            </mask>
+          </defs>
+
+          <ellipse cx="500" cy="300" rx="450" ry="250" fill="none" stroke="currentColor" stroke-width="6"/>
+
+          <line x1="500" y1="50" x2="500" y2="550" stroke="currentColor" stroke-width="4"/>
+          <line x1="50" y1="300" x2="950" y2="300" stroke="currentColor" stroke-width="4"/>
+
+          <path d="M 50 300 A 450 250 0 0 0 500 550 L 500 300 Z" fill="currentColor" mask="url(#gCutoutHero)"/>
+
+          <text x="320" y="240" font-size="140" font-family="Orbitron, Arial, sans-serif" font-weight="600" fill="currentColor">G</text>
+
+          <text x="610" y="240" font-size="140" font-family="Orbitron, Arial, sans-serif" font-weight="600" fill="currentColor">C</text>
+
+          <text x="610" y="450" font-size="140" font-family="Orbitron, Arial, sans-serif" font-weight="600" fill="currentColor">S</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bouncing down arrow -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+    <a href="#helpdesk" class="text-brand-yellow hover:text-white transition-colors">
+      <svg class="w-8 h-8 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </a>
+  </div>
+</section>

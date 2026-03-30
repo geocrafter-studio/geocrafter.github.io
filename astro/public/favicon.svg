@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <rect width="200" height="120" fill="#121212"/>
+  
+  <defs>
+    <mask id="gCutout">
+      <rect width="100%" height="100%" fill="white"/>
+      <text x="32" y="78" font-size="48" font-family="Orbitron, Arial, sans-serif" font-weight="600" fill="black">G</text>
+    </mask>
+  </defs>
+  
+  <!-- Outer ellipse -->
+  <ellipse cx="60" cy="60" rx="55" ry="35" fill="none" stroke="#7c3aed" stroke-width="3"/>
+  
+  <!-- Dividing lines -->
+  <line x1="60" y1="25" x2="60" y2="95" stroke="#7c3aed" stroke-width="2"/>
+  <line x1="5" y1="60" x2="115" y2="60" stroke="#7c3aed" stroke-width="2"/>
+  
+  <!-- Bottom-left quadrant with G cut out -->
+  <path d="M 5 60 A 55 35 0 0 0 60 95 L 60 60 Z" fill="#7c3aed" mask="url(#gCutout)"/>
+  
+  <!-- Letter G (top-left) -->
+  <text x="32" y="78" font-size="48" font-family="Orbitron, Arial, sans-serif" font-weight="600" fill="#7c3aed">G</text>
+  
+  <!-- Letter C (top-right) -->
+  <text x="73" y="78" font-size="48" font-family="Orbitron, Arial, sans-serif" font-weight="600" fill="#7c3aed">C</text>
+  
+  <!-- Letter S (bottom-right) -->
+  <text x="73" y="112" font-size="48" font-family="Orbitron, Arial, sans-serif" font-weight="600" fill="#7c3aed">S</text>
+</svg>

@@ -1,0 +1,53 @@
+---
+const formats = [
+  {
+    name: "COG",
+    fullName: "Cloud Optimized GeoTIFF",
+    description: "Raster data & satellite imagery"
+  },
+  {
+    name: "GeoParquet",
+    fullName: "GeoParquet",
+    description: "Vector data for analytics"
+  },
+  {
+    name: "Zarr",
+    fullName: "Zarr",
+    description: "Multidimensional arrays"
+  },
+  {
+    name: "OGC",
+    fullName: "OGC Standards",
+    description: "WMS, WFS, WMTS APIs"
+  }
+];
+---
+
+<section id="datasets" class="section bg-neutral-50">
+  <div class="container-custom">
+    <div class="text-center mb-12">
+      <h2 class="heading-display text-block-title text-brand-dark mb-4">DATASETS</h2>
+      <p class="text-body text-neutral-600 max-w-2xl mx-auto">
+        Cloud-native geospatial datasets optimized for modern workflows and analysis pipelines.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      {formats.map((format) => (
+        <div class="bg-white p-6 text-center border border-neutral-100">
+          <div class="w-12 h-12 bg-brand-dark flex items-center justify-center mx-auto mb-3">
+            <span class="font-display text-sm text-brand-yellow">{format.name}</span>
+          </div>
+          <h4 class="font-bold text-brand-dark mb-1">{format.fullName}</h4>
+          <p class="text-small text-neutral-500">{format.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center">
+      <a href="/datasets" class="btn-primary">
+        Browse Datasets
+      </a>
+    </div>
+  </div>
+</section>

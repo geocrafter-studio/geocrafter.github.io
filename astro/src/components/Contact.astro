@@ -1,0 +1,83 @@
+---
+---
+
+<section id="contact" class="section bg-brand-dark text-white">
+  <div class="container-custom">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="heading-display text-block-title text-brand-yellow mb-4">CONTACT US</h2>
+        <p class="text-body text-neutral-200">
+          Ready to start your geospatial project? We'd love to hear from you.
+        </p>
+      </div>
+
+      <form class="card-dark space-y-6" action="https://formspree.io/f/mgonqrna" method="POST">
+        <div>
+          <label for="name" class="block text-small font-bold uppercase tracking-wider text-neutral-400 mb-2">
+            Name / Organization *
+          </label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            required 
+            class="w-full px-4 py-3 bg-brand-dark border border-neutral-700 text-white placeholder-neutral-500 focus:border-brand-yellow focus:outline-none transition-colors"
+            placeholder="Your name or organization"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-small font-bold uppercase tracking-wider text-neutral-400 mb-2">
+            Email Address *
+          </label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            required 
+            class="w-full px-4 py-3 bg-brand-dark border border-neutral-700 text-white placeholder-neutral-500 focus:border-brand-yellow focus:outline-none transition-colors"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <div>
+          <label for="subject" class="block text-small font-bold uppercase tracking-wider text-neutral-400 mb-2">
+            Subject *
+          </label>
+          <select 
+            id="subject" 
+            name="subject" 
+            required 
+            class="w-full px-4 py-3 bg-brand-dark border border-neutral-700 text-white focus:border-brand-yellow focus:outline-none transition-colors"
+          >
+            <option value="">Select a topic...</option>
+            <option value="General Information">General Information</option>
+            <option value="Workshops and Training">Workshops and Training</option>
+            <option value="Project">Project</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="message" class="block text-small font-bold uppercase tracking-wider text-neutral-400 mb-2">
+            Message
+          </label>
+          <textarea 
+            id="message" 
+            name="message" 
+            rows="4" 
+            class="w-full px-4 py-3 bg-brand-dark border border-neutral-700 text-white placeholder-neutral-500 focus:border-brand-yellow focus:outline-none transition-colors resize-none"
+            placeholder="Tell us about your project or question..."
+          ></textarea>
+        </div>
+
+        <p class="text-small text-neutral-400">
+          By clicking below to submit this form you acknowledge that the information you provide will be stored and processed in accordance with GDPR guidelines.
+        </p>
+
+        <button type="submit" class="btn-primary w-full">
+          Send
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

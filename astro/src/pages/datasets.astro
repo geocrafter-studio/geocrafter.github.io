@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../components/CTA.astro';
+import ComingSoon from '../components/ComingSoon.astro';
+---
+
+<BaseLayout title="Datasets - GeoCrafter">
+  <ComingSoon>
+    <Header />
+    <main class="pt-24">
+      <section class="section bg-brand-dark text-white">
+        <div class="container-custom">
+          <h1 class="font-orbitron text-5xl lg:text-7xl text-brand-yellow tracking-wider leading-tight mb-4">DATASETS</h1>
+          <p class="text-subheading text-neutral-200 max-w-2xl">
+            Cloud-native geospatial datasets optimized for modern workflows and analysis pipelines.
+          </p>
+        </div>
+      </section>
+
+      <section class="section bg-neutral-50">
+        <div class="container-custom">
+          <h2 class="heading-display text-3xl text-brand-dark mb-8">AVAILABLE FORMATS</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- COG -->
+            <div class="card">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-16 h-16 bg-brand-dark flex items-center justify-center">
+                  <span class="font-orbitron text-2xl text-brand-yellow">COG</span>
+                </div>
+                <div>
+                  <h3 class="font-heading text-xl text-brand-dark">Cloud Optimized GeoTIFF</h3>
+                  <p class="text-small text-neutral-500 uppercase tracking-wider">Raster Format</p>
+                </div>
+              </div>
+              <p class="text-body text-neutral-600 mb-4">
+                Cloud Optimized GeoTIFF (COG) is a GeoTIFF format optimized for cloud storage and efficient access. 
+                Perfect for raster data and satellite imagery with lazy loading and range requests support.
+              </p>
+              <p class="text-small text-neutral-400">
+                <strong>Use cases:</strong> Satellite imagery, elevation data, orthophotos, remote sensing analysis
+              </p>
+            </div>
+
+            <!-- GeoParquet -->
+            <div class="card">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-16 h-16 bg-brand-yellow flex items-center justify-center">
+                  <span class="font-orbitron text-xl text-brand-dark">GPQ</span>
+                </div>
+                <div>
+                  <h3 class="font-heading text-xl text-brand-dark">GeoParquet</h3>
+                  <p class="text-small text-neutral-500 uppercase tracking-wider">Vector Format</p>
+                </div>
+              </div>
+              <p class="text-body text-neutral-600 mb-4">
+                GeoParquet is a columnar format for storing vector geospatial data using Apache Parquet. 
+                Enables fast analytical queries on large datasets with efficient compression.
+              </p>
+              <p class="text-small text-neutral-400">
+                <strong>Use cases:</strong> Administrative boundaries, building footprints, points of interest
+              </p>
+            </div>
+
+            <!-- Zarr -->
+            <div class="card">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-16 h-16 bg-brand-dark flex items-center justify-center">
+                  <span class="font-orbitron text-2xl text-brand-yellow">ZAR</span>
+                </div>
+                <div>
+                  <h3 class="font-heading text-xl text-brand-dark">Zarr</h3>
+                  <p class="text-small text-neutral-500 uppercase tracking-wider">Multidimensional</p>
+                </div>
+              </div>
+              <p class="text-body text-neutral-600 mb-4">
+                Zarr is a format for chunked, multidimensional arrays with flexible metadata. 
+                Ideal for Earth Observation time series and scientific data analysis.
+              </p>
+              <p class="text-small text-neutral-400">
+                <strong>Use cases:</strong> Climate data, satellite time series, weather models, scientific datasets
+              </p>
+            </div>
+
+            <!-- OGC -->
+            <div class="card">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-16 h-16 bg-brand-yellow flex items-center justify-center">
+                  <span class="font-orbitron text-2xl text-brand-dark">OGC</span>
+                </div>
+                <div>
+                  <h3 class="font-heading text-xl text-brand-dark">OGC Standards</h3>
+                  <p class="text-small text-neutral-500 uppercase tracking-wider">API Services</p>
+                </div>
+              </div>
+              <p class="text-body text-neutral-600 mb-4">
+                Open Geospatial Consortium standards for web services. Compliant with WMS, WFS, WMTS, and OGC API specifications.
+              </p>
+              <p class="text-small text-neutral-400">
+                <strong>Use cases:</strong> Web mapping, spatial data APIs, interoperability
+              </p>
+            </div>
+          </div>
+
+          <h2 class="heading-display text-3xl text-brand-dark mb-8">STORAGE & ACCESS</h2>
+          <div class="card-dark">
+            <p class="text-body text-neutral-200 mb-6">
+              All datasets are hosted on S3-compatible storage with high-speed access from European data centers.
+            </p>
+            <ul class="space-y-3 text-neutral-300">
+              <li class="flex items-start gap-3">
+                <span class="text-brand-yellow">→</span>
+                <span>API-based access via S3 protocol and HTTPS</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-brand-yellow">→</span>
+                <span>STAC catalogs for programmatic discovery</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-brand-yellow">→</span>
+                <span>Free tier available for academic and non-commercial use</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <CTA />
+    <Footer />
+  </ComingSoon>
+</BaseLayout>

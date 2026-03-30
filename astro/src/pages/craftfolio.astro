@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const projects = [
+  {
+    title: "ScalarGIS",
+    description: "FOSS webgis platform with legislative needs for Portuguese Public Administrative Institutions. Strategic partnership for vertical development in Portugal.",
+    client: "WKT - SI, Lda.",
+    date: "2018",
+    categories: ["DevOps", "Backend Development"]
+  },
+  {
+    title: "Collective Crunch",
+    description: "Leading GIS development for Linda Forest project with full-stack support including infrastructure and data pipelines.",
+    client: "Collective Crunch, Oy.",
+    date: "2018",
+    categories: ["DevOps", "ETL", "Backend Development"]
+  },
+  {
+    title: "Geoportal Ansião",
+    description: "ScalarGIS geoportal deployment with advanced security, metadata management, and custom styling for government client.",
+    client: "Município de Ansião",
+    date: "2022",
+    categories: ["DevOps", "GIS", "Infrastructure"]
+  },
+  {
+    title: "S&M Geosptatial Platform",
+    description: "Provided expertise on S&M's new geospatial infrastructure build, configuration and maintenance.",
+    client: "Sobral e Monteiro Consulting",
+    date: "2023",
+    categories: ["DevOps", "GIS", "Infrastructure"]
+  },
+  {
+    title: "Civitate",
+    description: "Flagship product engaging communities using lessons learned from social media platforms. PaaS solution with community engagement features.",
+    client: "Geocrafter - Geospatial Studio",
+    date: "2026",
+    categories: ["PaaS", "Web Development", "DevOps"]
+  },
+  {
+    title: "You?",
+    description: "We would love to help you on your next geospatial challenge!",
+    client: "ACME",
+    date: "2026",
+    categories: ["Cloud", "DevOps", "GIS"]
+  }
+   
+];
+---
+
+<BaseLayout title="Craftfolio - Geocrafter">
+  <Header />
+  <main class="pt-24 lg:pt-32">
+    <!-- Hero Section -->
+    <section class="section bg-brand-dark text-white">
+      <div class="container-custom">
+        <div class="text-center mb-12">
+          <h1 class="heading-display text-block-title text-brand-yellow mb-4">CRAFTFOLIO</h1>
+          <p class="text-body text-neutral-200 max-w-2xl mx-auto">
+            Showcasing our expertise in geospatial solutions, from web GIS platforms to cloud infrastructure and custom development.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="section bg-white">
+      <div class="container-custom">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <article class="card group hover:border-brand-yellow transition-colors">
+              <div class="flex items-start justify-between mb-4">
+                <h3 class="font-display text-xl text-brand-dark group-hover:text-brand-yellow transition-colors">
+                  {project.title}
+                </h3>
+                <span class="text-small text-neutral-400 uppercase tracking-wider">{project.date}</span>
+              </div>
+              <p class="text-body text-neutral-600 mb-4">{project.description}</p>
+              <div class="border-t border-neutral-100 pt-4 mt-4">
+                <p class="text-small text-neutral-400 uppercase tracking-wider mb-1">Client</p>
+                <p class="font-bold text-brand-dark">{project.client}</p>
+              </div>
+              <div class="mt-3">
+                <p class="text-small text-neutral-400 uppercase tracking-wider mb-1">Category</p>
+                <div class="flex flex-wrap gap-3">
+                  {project.categories.map((cat) => (
+                    <span class="inline-block px-3 py-1 text-xs font-bold text-brand-dark bg-brand-yellow rounded">
+                      {cat}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-dark">
+      <div class="container-custom text-center">
+        <h2 class="heading-display text-heading-lg text-brand-yellow mb-4">READY TO START YOUR PROJECT?</h2>
+        <p class="text-body text-neutral-200 mb-8 max-w-2xl mx-auto">
+          Let's discuss how we can help transform your geospatial challenges into innovative solutions.
+        </p>
+        <a href="/#contact" class="btn-primary">
+          Get in Touch
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

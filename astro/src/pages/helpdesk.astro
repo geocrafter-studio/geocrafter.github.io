@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../components/CTA.astro';
+import ComingSoon from '../components/ComingSoon.astro';
+---
+
+<BaseLayout title="Helpdesk - GeoCrafter">
+  <ComingSoon>
+    <Header />
+    <main class="pt-24">
+      <section class="section bg-brand-dark text-white">
+        <div class="container-custom">
+          <h1 class="font-orbitron text-5xl lg:text-7xl text-brand-yellow tracking-wider leading-tight mb-4">HELPDESK</h1>
+          <p class="text-subheading text-neutral-200 max-w-2xl">
+            Professional support for your geospatial infrastructure and workflows.
+          </p>
+        </div>
+      </section>
+
+      <section class="section bg-neutral-50">
+        <div class="container-custom">
+          <h2 class="heading-display text-3xl text-brand-dark mb-8">SUPPORT SERVICES</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="card">
+              <h3 class="font-heading text-xl text-brand-dark mb-4">Technical Assistance</h3>
+              <p class="text-body text-neutral-600 mb-4">
+                Direct access to our geospatial experts for troubleshooting, best practices, and solution design.
+              </p>
+              <p class="text-small text-neutral-400">
+                <strong>Response time:</strong> 24-48 hours for standard, 4 hours for critical issues
+              </p>
+            </div>
+
+            <div class="card">
+              <h3 class="font-heading text-xl text-brand-dark mb-4">Infrastructure Monitoring</h3>
+              <p class="text-body text-neutral-600 mb-4">
+                Proactive monitoring and alerting for your GIS infrastructure, servers, and data pipelines.
+              </p>
+              <p class="text-small text-neutral-400">
+                <strong>Includes:</strong> 24/7 monitoring, uptime alerts, performance reports
+              </p>
+            </div>
+
+            <div class="card">
+              <h3 class="font-heading text-xl text-brand-dark mb-4">Custom Development</h3>
+              <p class="text-body text-neutral-600 mb-4">
+                Bespoke solutions tailored to your specific needs, from plugins to full-stack applications.
+              </p>
+              <p class="text-small text-neutral-400">
+                <strong>Technologies:</strong> Python, PostGIS, GeoServer, QGIS Server
+              </p>
+            </div>
+
+            <div class="card">
+              <h3 class="font-heading text-xl text-brand-dark mb-4">Training & Workshops</h3>
+              <p class="text-body text-neutral-600 mb-4">
+                Hands-on sessions covering geospatial technologies, cloud platforms, and modern workflows.
+              </p>
+              <p class="text-small text-neutral-400">
+                <strong>Formats:</strong> On-site, remote, self-paced online courses
+              </p>
+            </div>
+          </div>
+
+          <h2 class="heading-display text-3xl text-brand-dark mb-8">SUPPORT PLANS</h2>
+          <div class="card-dark">
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="text-center">
+                <h3 class="font-orbitron text-xl text-brand-yellow mb-2">BASIC</h3>
+                <p class="text-3xl font-bold text-white mb-2">€99<span class="text-sm font-normal text-neutral-400">/month</span></p>
+                <ul class="text-neutral-300 text-sm space-y-2 mt-4">
+                  <li>Email support</li>
+                  <li>Business hours response</li>
+                  <li>Monthly report</li>
+                </ul>
+              </div>
+              <div class="text-center border-l border-neutral-700">
+                <h3 class="font-orbitron text-xl text-brand-yellow mb-2">PRO</h3>
+                <p class="text-3xl font-bold text-white mb-2">€299<span class="text-sm font-normal text-neutral-400">/month</span></p>
+                <ul class="text-neutral-300 text-sm space-y-2 mt-4">
+                  <li>Priority email & chat</li>
+                  <li>4h critical response</li>
+                  <li>Weekly monitoring reports</li>
+                  <li>Quarterly consultation</li>
+                </ul>
+              </div>
+              <div class="text-center border-l border-neutral-700">
+                <h3 class="font-orbitron text-xl text-brand-yellow mb-2">ENTERPRISE</h3>
+                <p class="text-3xl font-bold text-white mb-2">Custom</p>
+                <ul class="text-neutral-300 text-sm space-y-2 mt-4">
+                  <li>24/7 phone support</li>
+                  <li>1h critical response</li>
+                  <li>Custom SLAs</li>
+                  <li>Dedicated account manager</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <CTA />
+    <Footer />
+  </ComingSoon>
+</BaseLayout>
