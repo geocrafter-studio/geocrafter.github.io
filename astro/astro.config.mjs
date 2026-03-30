@@ -2,7 +2,8 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://geocrafter.github.io',
+  site: 'https://geocrafter-studio.github.io',
+  base: '/geocrafter.github.io',
   integrations: [tailwind()],
   output: 'static',
 });
