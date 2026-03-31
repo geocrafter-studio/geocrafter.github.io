@@ -3,7 +3,6 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   site: 'https://geocrafter-studio.github.io',
-  base: '/geocrafter.github.io',
   integrations: [tailwind()],
   output: 'static',
 });
