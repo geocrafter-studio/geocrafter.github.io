@@ -70,6 +70,16 @@
           ></textarea>
         </div>
 
+        <div class="altcha-container">
+          <altcha-widget
+            challengeurl="https://api.altcha.org/v1/challenge"
+            language="en"
+            auto="onfocus"
+            hidelogo
+            hidefooter
+          ></altcha-widget>
+        </div>
+
         <p class="text-small text-neutral-400">
           By clicking below to submit this form you acknowledge that the information you provide will be stored and processed in accordance with GDPR guidelines.
         </p>
@@ -81,3 +91,29 @@
     </div>
   </div>
 </section>
+
+<script>
+  import('altcha');
+</script>
+
+<style>
+  .altcha-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .altcha-container altcha-widget {
+    --altcha-color-base: #121212;
+    --altcha-color-border: #4a4a4a;
+    --altcha-color-text: #ffffff;
+    --altcha-color-border-focus: #ffd700;
+    --altcha-color-error-text: #ff6b6b;
+    --altcha-color-footer-bg: #181818;
+    --altcha-border-radius: 0px;
+    --altcha-border-width: 1px;
+    --altcha-font-family: 'Fira Mono', monospace;
+    --altcha-max-width: 100%;
+    width: 100%;
+  }
+</style>
