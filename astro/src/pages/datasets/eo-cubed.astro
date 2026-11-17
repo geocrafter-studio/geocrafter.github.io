@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CTA from '../../components/CTA.astro';
+---
+
+<BaseLayout
+  title="EO-CUBED - GeoCrafter"
+  description="EO-CUBED is Geocrafter's on-demand Earth Observation platform built on cloud-native Zarr datacubes."
+>
+  <Header />
+  <main class="pt-24">
+    <!-- Hero -->
+    <section class="section bg-brand-dark text-white">
+      <div class="container-custom">
+        <div class="inline-block px-3 py-1 bg-brand-yellow text-brand-dark text-small font-bold uppercase tracking-wider mb-4">
+          On-Demand EO Platform
+        </div>
+        <h1 class="font-orbitron text-5xl lg:text-7xl text-brand-yellow tracking-wider leading-tight mb-4">EO-CUBED</h1>
+        <p class="text-subheading text-neutral-200 max-w-3xl">
+          On-demand Earth Observation datacubes, served straight from the cloud.
+        </p>
+      </div>
+    </section>
+
+    <!-- Abstract -->
+    <section class="section bg-neutral-50">
+      <div class="container-custom">
+        <div class="max-w-3xl">
+          <h2 class="heading-display text-3xl text-brand-dark mb-6">ABOUT</h2>
+          <p class="text-body text-neutral-600 mb-4">
+            EO-CUBED is Geocrafter's on-demand Earth Observation platform — the culmination of
+            years of research around EO data and Zarr datacubes. It turns satellite archives into
+            cloud-native, analysis-ready datacubes that you query, subset and stream on demand,
+            without downloading entire scenes.
+          </p>
+          <p class="text-body text-neutral-600 mb-8">
+            Built on open standards and S3-compatible object storage, EO-CUBED keeps your
+            workflows close to the data, so you can go from an idea to an answer in minutes.
+          </p>
+          <a
+            href="https://eo-cubed.geocrafter.eu"
+            target="_blank"
+            rel="noopener"
+            class="btn-primary"
+          >
+            Open EO-CUBED Platform →
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <CTA />
+  <Footer />
+</BaseLayout>

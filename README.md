@@ -68,8 +68,21 @@ geocrafter-website/
 | `/` | Homepage with hero, features, contact |
 | `/datasets` | Datasets catalog |
 | `/expertise` | Expertise and services |
+| `/trainings` | Trainings and workshops catalog |
 | `/craftfolio` | Project portfolio |
 | `/helpdesk` | Helpdesk (Coming Soon) |
+
+## Adding a training or workshop
+
+Edit `astro/src/data/trainings.yaml`. Each entry is one card, sorted by `date`
+(ISO format). Fields: `title`, `type` (`training` | `workshop`), `date`, `endDate` (optional, for multi-day sessions),
+`tba` (with `tba: true`, `dateLabel` is shown instead of the formatted date,
+e.g. "Q1 2027"), `time`,
+`totalHours`, `mode` (`online` | `onsite`), `location`, `language`,
+`minParticipants`,
+`maxParticipants`, `price` (EUR, excl. VAT), `registrationUrl` (optional
+external form; the Register button is hidden when omitted) and `contents`
+(list of strings). The page is generated at build time, so redeploy after editing.
 
 ## Deployment
 

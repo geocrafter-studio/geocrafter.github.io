@@ -1,0 +1,51 @@
+# Add, edit or remove trainings/workshops here. The page sorts them by `date`.
+# type: training | workshop
+# mode: online | onsite
+# date: ISO date (YYYY-MM-DD), used for sorting and display.
+# endDate: optional ISO date for multi-day sessions; displays a range.
+# tba: true means the date is not fixed yet; `dateLabel` is shown instead of
+#      the formatted date (e.g. "Q1 2027"). `date` still orders the card.
+# registrationUrl: optional; the Register button is hidden when omitted.
+# language: free text ("English", "Portuguese"...); shown on the card and used
+#           by the language filter.
+- title: Intro to Cloud-Native Geospatial
+  type: workshop
+  date: 2027-02-18
+  dateLabel: Q1 2027
+  tba: true
+  time: "09:30-16:30 Lisbon/UK"
+  totalHours: 6
+  mode: online
+  location: Zoom
+  language: English
+  minParticipants: 5
+  maxParticipants: 20
+  price: 100
+  registrationUrl: https://forms.example.com/cloud-native-formats
+  contents:
+    - COG, GeoParquet and Zarr in practice
+    - STAC catalogues and range requests
+    - Hands-on processing of a real dataset
+    - Cloud-native access patterns with Python
+
+- title: GeoSQL
+  type: workshop
+  date: 2027-03-18
+  endDate: 2027-03-19
+  dateLabel: Q1 2027
+  tba: true
+  time: "09:30-16:30 Lisbon/UK"
+  totalHours: 12
+  mode: onsite
+  location: Ansião, Portugal
+  language: Português
+  minParticipants: 4
+  maxParticipants: 12
+  price: 400
+  registrationUrl: https://forms.example.com/cloud-native-formats
+  contents:
+    - O que é o GeoSQL?
+    - O que são Skills? Análise estrutural do Skill GeoSQL.
+    - Instalação e Configuração
+    - Casos prácticos
+    

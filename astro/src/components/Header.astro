@@ -11,11 +11,29 @@
 
       <!-- Desktop Nav -->
       <div class="hidden md:flex items-center gap-8">
-        <a href="/datasets" class="font-sans text-sm text-white hover:text-brand-yellow transition-colors">
-          Datasets
-        </a>
+        <div class="relative group">
+          <a href="/datasets" class="flex items-center gap-1 font-sans text-sm text-white hover:text-brand-yellow transition-colors">
+            Datasets
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </a>
+          <div class="absolute left-0 top-full hidden group-hover:block group-focus-within:block pt-4">
+            <div class="min-w-[180px] bg-brand-charcoal border border-neutral-800 py-2">
+              <a href="/datasets" class="block px-4 py-2 font-sans text-sm text-white hover:text-brand-yellow transition-colors">
+                Datasets
+              </a>
+              <a href="/datasets/eo-cubed" class="block px-4 py-2 font-sans text-sm text-white hover:text-brand-yellow transition-colors">
+                EO-CUBED
+              </a>
+            </div>
+          </div>
+        </div>
         <a href="/expertise" class="font-sans text-sm text-white hover:text-brand-yellow transition-colors">
           Expertise
+        </a>
+        <a href="/trainings" class="font-sans text-sm text-white hover:text-brand-yellow transition-colors">
+          Trainings
         </a>
         <a href="/craftfolio" class="font-sans text-sm text-white hover:text-brand-yellow transition-colors">
           Craftfolio
@@ -43,8 +61,14 @@
       <a href="/datasets" class="block font-sans text-white hover:text-brand-yellow">
         Datasets
       </a>
+      <a href="/datasets/eo-cubed" class="block pl-4 font-sans text-sm text-neutral-400 hover:text-brand-yellow">
+        EO-CUBED
+      </a>
       <a href="/expertise" class="block font-sans text-white hover:text-brand-yellow">
         Expertise
+      </a>
+      <a href="/trainings" class="block font-sans text-white hover:text-brand-yellow">
+        Trainings
       </a>
       <a href="/craftfolio" class="block font-sans text-white hover:text-brand-yellow">
         Craftfolio

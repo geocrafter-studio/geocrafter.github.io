@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../components/CTA.astro';
+import yaml from 'js-yaml';
+import raw from '../data/trainings.yaml?raw';
+
+const trainings = ((yaml.load(raw) as any[]) ?? []).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+// Fail the build with a clear message instead of rendering a broken card.
+for (const t of trainings) {
+  for (const key of ['title', 'type', 'date', 'time', 'totalHours', 'mode', 'location', 'language', 'minParticipants', 'maxParticipants', 'price']) {
+    if (t[key] === undefined) throw new Error(`trainings.yaml: "${key}" missing in "${t.title ?? '?'}"`);
+  }
+  if (isNaN(new Date(t.date).getTime())) throw new Error(`trainings.yaml: invalid date "${t.date}" in "${t.title}"`);
+  if (t.endDate !== undefined) {
+    if (isNaN(new Date(t.endDate).getTime())) throw new Error(`trainings.yaml: invalid endDate "${t.endDate}" in "${t.title}"`);
+    if (new Date(t.endDate) < new Date(t.date)) throw new Error(`trainings.yaml: endDate "${t.endDate}" is before date "${t.date}" in "${t.title}"`);
+  }
+}
+
+const fmtDate = (value: any, month = true) =>
+  new Date(value).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    ...(month ? { month: 'short', year: 'numeric' } : {}),
+    timeZone: 'UTC',
+  });
+
+const dateLabel = (t: any) => {
+  // tba: the scheduled date is not fixed yet; dateLabel carries the wording.
+  if (t.tba) return t.dateLabel ?? `Expected ${fmtDate(t.date)}`;
+  const start = new Date(t.date);
+  const end = t.endDate && new Date(t.endDate);
+  if (!end) return fmtDate(t.date);
+  const sameMonth = start.getUTCMonth() === end.getUTCMonth() && start.getUTCFullYear() === end.getUTCFullYear();
+  return sameMonth ? `${fmtDate(t.date, false)}–${fmtDate(t.endDate)}` : `${fmtDate(t.date)} – ${fmtDate(t.endDate)}`;
+};
+
+const languages = [...new Set(trainings.map((t) => t.language))].sort();
+---
+
+<BaseLayout title="Trainings & Workshops - GeoCrafter">
+  <Header />
+  <main class="pt-24">
+    <section class="section bg-brand-dark text-white">
+      <div class="container-custom">
+        <h1 class="font-orbitron text-5xl lg:text-7xl text-brand-yellow tracking-wider leading-tight mb-4">TRAININGS &amp; WORKSHOPS</h1>
+        <p class="text-subheading text-neutral-200 max-w-2xl">
+          Practical, hands-on sessions on open source geospatial tools, delivered online or on site.
+        </p>
+      </div>
+    </section>
+
+    <section class="section bg-neutral-50">
+      <div class="container-custom">
+        <h2 class="heading-display text-3xl text-brand-dark mb-8">UPCOMING SESSIONS</h2>
+
+        {trainings.length === 0 ? (
+          <p class="text-body text-neutral-600">
+            Nothing scheduled at the moment. <a href="/#contact" class="text-brand-dark underline">Get in touch</a> if you would like a session for your team.
+          </p>
+        ) : (
+          <>
+            {languages.length > 1 && (
+              <div class="flex flex-wrap items-center gap-2 mb-8">
+                <span class="text-small text-neutral-500 uppercase tracking-wider mr-2">Language</span>
+                <button type="button" data-language-filter="all" aria-pressed="true" class="px-4 py-2 font-sans text-small uppercase tracking-wider border border-neutral-300 text-neutral-600 hover:border-brand-dark transition-colors aria-pressed:border-brand-dark aria-pressed:bg-brand-dark aria-pressed:text-brand-yellow">
+                  All
+                </button>
+                {languages.map((language) => (
+                  <button type="button" data-language-filter={language} aria-pressed="false" class="px-4 py-2 font-sans text-small uppercase tracking-wider border border-neutral-300 text-neutral-600 hover:border-brand-dark transition-colors aria-pressed:border-brand-dark aria-pressed:bg-brand-dark aria-pressed:text-brand-yellow">
+                    {language}
+                  </button>
+                ))}
+              </div>
+            )}
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {trainings.map((t, i) => (
+                <div class="card flex flex-col" data-language={t.language}>
+                  <div class="flex items-center justify-between gap-4 mb-5">
+                    <span class={`px-3 py-1 font-sans text-small uppercase tracking-wider ${t.type === 'workshop' ? 'bg-brand-dark text-brand-yellow' : 'bg-brand-yellow text-brand-dark'}`}>
+                      {t.type}
+                    </span>
+                    <span class="text-small text-neutral-500 uppercase tracking-wider">
+                      {t.mode === 'online' ? 'Online' : 'On-site'} · {t.language}
+                    </span>
+                  </div>
+                  <h3 class="font-heading text-xl text-brand-dark mb-3">{t.title}</h3>
+                  <p class="text-small text-neutral-500 uppercase tracking-wider mb-1">{dateLabel(t)}</p>
+                  <p class="text-body text-neutral-600 mb-6">{t.time}</p>
+                  <div class="mt-auto flex items-center justify-between gap-4">
+                    <span class="font-orbitron text-2xl text-brand-dark">€{t.price}*</span>
+                    <button type="button" data-dialog={`training-${i}`} class="btn-secondary">
+                      More information
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p class="mt-6 text-small text-neutral-500">* Excluding VAT</p>
+          </>
+        )}
+
+        <p class="mt-12 pt-6 border-t border-neutral-300 text-body text-neutral-600">
+          About <strong>10% of our training revenue</strong> goes directly to the open source projects we build on.
+        </p>
+      </div>
+    </section>
+  </main>
+  <CTA />
+  <Footer />
+
+  {trainings.map((t, i) => (
+    <dialog id={`training-${i}`} aria-labelledby={`training-title-${i}`} class="m-auto w-[calc(100%-2rem)] max-w-2xl max-h-[90vh] overflow-y-auto bg-white p-0 text-neutral-800 backdrop:bg-black/70">
+      <div class="p-6 lg:p-8">
+        <div class="flex items-start justify-between gap-4 mb-6">
+          <div>
+            <p class="text-small text-neutral-500 uppercase tracking-wider mb-2">{t.type} · {t.mode === 'online' ? 'Online' : 'On-site'}</p>
+            <h3 id={`training-title-${i}`} class="font-heading text-2xl text-brand-dark">{t.title}</h3>
+          </div>
+          <button type="button" data-close aria-label="Close" class="-mt-2 -mr-2 p-2 text-2xl leading-none text-neutral-500 hover:text-brand-dark">×</button>
+        </div>
+
+        <dl class="grid sm:grid-cols-2 gap-4 mb-6 text-body">
+          <div>
+            <dt class="text-small text-neutral-500 uppercase tracking-wider">Date</dt>
+            <dd class="text-neutral-800">{dateLabel(t)}</dd>
+          </div>
+          <div>
+            <dt class="text-small text-neutral-500 uppercase tracking-wider">Time</dt>
+            <dd class="text-neutral-800">{t.time}</dd>
+          </div>
+          <div>
+            <dt class="text-small text-neutral-500 uppercase tracking-wider">Location</dt>
+            <dd class="text-neutral-800">{t.mode === 'online' ? 'Online' : 'On site'} — {t.location}</dd>
+          </div>
+          <div>
+            <dt class="text-small text-neutral-500 uppercase tracking-wider">Language</dt>
+            <dd class="text-neutral-800">{t.language}</dd>
+          </div>
+          <div>
+            <dt class="text-small text-neutral-500 uppercase tracking-wider">Total hours</dt>
+            <dd class="text-neutral-800">{t.totalHours}</dd>
+          </div>
+          <div>
+            <dt class="text-small text-neutral-500 uppercase tracking-wider">Participants</dt>
+            <dd class="text-neutral-800">{t.minParticipants}–{t.maxParticipants}</dd>
+          </div>
+          <div>
+            <dt class="text-small text-neutral-500 uppercase tracking-wider">Price</dt>
+            <dd class="text-neutral-800">€{t.price} (excl. VAT)</dd>
+          </div>
+        </dl>
+
+        <h4 class="text-small text-neutral-500 uppercase tracking-wider mb-2">Contents</h4>
+        <ul class="list-disc pl-5 space-y-1 text-body text-neutral-600 mb-8">
+          {(t.contents ?? []).map((item) => <li>{item}</li>)}
+        </ul>
+
+        {t.registrationUrl && (
+          <a href={t.registrationUrl} target="_blank" rel="noopener" class="btn-primary">
+            Register
+          </a>
+        )}
+      </div>
+    </dialog>
+  ))}
+</BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-dialog]').forEach((button) => {
+    button.addEventListener('click', () => {
+      (document.getElementById(button.dataset.dialog!) as HTMLDialogElement | null)?.showModal();
+    });
+  });
+
+  document.querySelectorAll<HTMLDialogElement>('dialog').forEach((dialog) => {
+    dialog.querySelector('[data-close]')?.addEventListener('click', () => dialog.close());
+    // With padding removed, clicks on the backdrop hit the dialog element itself.
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>('[data-language-filter]');
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      filterButtons.forEach((other) => other.setAttribute('aria-pressed', String(other === button)));
+      const language = button.dataset.languageFilter;
+      document.querySelectorAll<HTMLElement>('[data-language]').forEach((card) => {
+        card.classList.toggle('hidden', language !== 'all' && card.dataset.language !== language);
+      });
+    });
+  });
+</script>
